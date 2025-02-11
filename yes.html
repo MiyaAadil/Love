@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e3eeff 100%);
+  background: #FFB6C1;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -60,8 +60,8 @@ body {
 }
 
 .catalog-img {
-  width: 90%; /* Increased from 85% */
-  height: 60%; /* Increased from 50% */
+  width: 85%; /* Increased from 85% */
+  height: 70%; /* Increased from 50% */
   object-fit: cover;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -191,7 +191,7 @@ p {
     <!-- Pages -->
     <div class="page" style="z-index: 4;">
       <div class="page-content">
-        <img src="/api/placeholder/320/240" alt="Product 1" class="catalog-img">
+        <img src="photo1.jpg" alt="Product 1" class="catalog-img">
         <h2>Summer Collection</h2>
         <p>Discover our latest summer styles</p>
         <span class="page-number">1</span>
@@ -200,7 +200,9 @@ p {
     
     <div class="page" style="z-index: 3;">
       <div class="page-content">
-        <img src="/api/placeholder/320/240" alt="Product 2" class="catalog-img">
+        <video class="catalog-img" width="640" height="360" controls>
+          <source src="labim.mp4" type="video/mp4">
+        </video>
         <h2>Beach Essentials</h2>
         <p>Perfect for your beach vacation</p>
         <span class="page-number">2</span>
@@ -209,7 +211,7 @@ p {
     
     <div class="page" style="z-index: 2;">
       <div class="page-content">
-        <img src="/api/placeholder/320/240" alt="Product 3" class="catalog-img">
+        <img src="photo3.jpg" alt="Product 3" class="catalog-img">
         <h2>Autumn Collection</h2>
         <p>Cozy and stylish autumn wear</p>
         <span class="page-number">3</span>
@@ -218,10 +220,19 @@ p {
     
     <div class="page" style="z-index: 1;">
       <div class="page-content">
-        <img src="/api/placeholder/320/240" alt="Product 4" class="catalog-img">
+        <img src="photo4.jpg" alt="Product 4" class="catalog-img">
         <h2>Winter Specials</h2>
         <p>Stay warm in style</p>
         <span class="page-number">4</span>
+      </div>
+    </div>
+
+    <div class="page" style="z-index: 1;">
+      <div class="page-content">
+        <img src="photo5.jpg" alt="Product 5" class="catalog-img">
+        <h2>Winter Specials</h2>
+        <p>Stay warm in style</p>
+        <span class="page-number">5</span>
       </div>
     </div>
   </div>
