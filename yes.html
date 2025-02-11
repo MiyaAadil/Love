@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
   margin: 0;
@@ -9,14 +10,17 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #f5f7fa 0%, #e3eeff 100%);
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .catalog-container {
-  width: 400px;
-  height: 500px;
+  width: 100%;
+  max-width: 500px; /* Increased from 400px */
+  height: 90vh; /* Increased from 80vh */
+  max-height: 700px; /* Increased from 500px */
   position: relative;
   perspective: 2000px;
-  padding: 20px;
 }
 
 .catalog {
@@ -37,6 +41,7 @@ body {
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   border-radius: 5px;
+  touch-action: pan-y pinch-zoom;
 }
 
 .page-content {
@@ -54,13 +59,9 @@ body {
   border-radius: 5px;
 }
 
-.page-back {
-  transform: rotateY(180deg);
-}
-
 .catalog-img {
-  width: 80%;
-  height: 60%;
+  width: 90%; /* Increased from 85% */
+  height: 60%; /* Increased from 50% */
   object-fit: cover;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -69,15 +70,16 @@ body {
 
 .page-number {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   font-family: Arial, sans-serif;
   color: #666;
+  font-size: 16px; /* Increased font size */
 }
 
 .turn-page {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 50px; /* Increased from 40px */
+  height: 50px; /* Increased from 40px */
   background: rgba(0,0,0,0.1);
   border-radius: 50%;
   top: 50%;
@@ -86,7 +88,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 24px; /* Increased from 20px */
   color: white;
   user-select: none;
   transition: background 0.3s;
@@ -98,33 +100,88 @@ body {
 }
 
 .prev-page {
-  left: -70px;
+  left: -60px; /* Adjusted for larger buttons */
 }
 
 .next-page {
-  right: -70px;
+  right: -60px; /* Adjusted for larger buttons */
 }
 
 .navigation-hint {
   position: absolute;
-  bottom: -40px;
+  bottom: -35px;
   width: 100%;
   text-align: center;
   font-family: Arial, sans-serif;
   color: #666;
+  font-size: 16px; /* Increased from 14px */
 }
 
 h2 {
-  margin: 10px 0;
+  margin: 15px 0;
   font-family: Arial, sans-serif;
   color: #333;
+  font-size: clamp(20px, 5vw, 28px); /* Increased size range */
+  text-align: center;
 }
 
 p {
-  margin: 5px 0;
+  margin: 10px 0;
   font-family: Arial, sans-serif;
   color: #666;
   text-align: center;
+  font-size: clamp(16px, 4vw, 20px); /* Increased size range */
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .catalog-container {
+    height: 85vh; /* Adjusted for better mobile view */
+    max-height: 800px; /* Increased for mobile */
+  }
+
+  .turn-page {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+  
+  .prev-page {
+    left: -45px;
+  }
+  
+  .next-page {
+    right: -45px;
+  }
+  
+  .page-content {
+    padding: 15px;
+  }
+}
+
+/* Small screen adjustments */
+@media (max-width: 480px) {
+  .turn-page {
+    display: none;
+  }
+  
+  .catalog-container {
+    height: 80vh;
+  }
+  
+  .navigation-hint {
+    font-size: 14px;
+  }
+
+  .catalog-img {
+    width: 95%;
+    height: 55%;
+  }
+}
+
+/* Prevent page turn animation during resize */
+.no-transition {
+  transition: none !important;
 }
 </style>
 </head>
@@ -171,12 +228,14 @@ p {
   
   <div class="turn-page prev-page">←</div>
   <div class="turn-page next-page">→</div>
-  <div class="navigation-hint">Click page or use arrows to turn</div>
+  <div class="navigation-hint">Swipe or click to turn pages</div>
 </div>
 
 <script>
 const pages = document.querySelectorAll('.page');
 let currentPage = 0;
+let startX = 0;
+let isDragging = false;
 
 function turnPage(direction) {
   if (direction === 'next' && currentPage < pages.length - 1) {
@@ -193,8 +252,37 @@ function turnPage(direction) {
   });
 }
 
-document.querySelector('.next-page').addEventListener('click', () => turnPage('next'));
-document.querySelector('.prev-page').addEventListener('click', () => turnPage('prev'));
+// Touch events for mobile
+document.querySelector('.catalog').addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+});
+
+document.querySelector('.catalog').addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+});
+
+document.querySelector('.catalog').addEventListener('touchend', (e) => {
+  if (!isDragging) return;
+  
+  const endX = e.changedTouches[0].clientX;
+  const diffX = endX - startX;
+  
+  if (Math.abs(diffX) > 50) { // Minimum swipe distance
+    if (diffX > 0) {
+      turnPage('prev');
+    } else {
+      turnPage('next');
+    }
+  }
+  
+  isDragging = false;
+});
+
+// Click/tap events
+document.querySelector('.next-page')?.addEventListener('click', () => turnPage('next'));
+document.querySelector('.prev-page')?.addEventListener('click', () => turnPage('prev'));
 
 pages.forEach((page, index) => {
   page.addEventListener('click', () => {
@@ -202,6 +290,17 @@ pages.forEach((page, index) => {
       turnPage('next');
     }
   });
+});
+
+// Handle window resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+  document.body.classList.add('no-transition');
+  
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    document.body.classList.remove('no-transition');
+  }, 250);
 });
 </script>
 </body>
