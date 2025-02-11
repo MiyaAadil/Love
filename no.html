@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>You don't have another choice!</h1>
+    <p>Please click the "Yes" button to accept my Valentine request. 💖</p>
+    <p>If you change your mind, click "Yes" below!</p>
+    <a href="index.html"><button class="btn">Yes</button></a> <!-- Link back to the main page -->
+  </div>
+</body>
+</html>
+
+<style>
+    /* Set background color and center everything */
+body {
+  background-color: #FFB6C1; /* Light pink background */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  text-align: center;
+}
+
+/* Container to center the content */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Base styles for buttons */
+.btn {
+  padding: 20px 40px;
+  margin: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px; /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for all effects */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+
+  background: linear-gradient(135deg, #FF69B4, #FF1493); /* Gradient from pink to dark pink */
+  color: white;
+  transform: translateY(-5px); /* Button lift effect */
+  box-shadow: 0px 12px 24px rgba(255, 20, 147, 0.4); /* Enhanced shadow on hover */
+}
+
+/* Style for Yes button */
+#yesButton {
+  background: linear-gradient(135deg, #FF69B4, #FF1493); /* Gradient from pink to dark pink */
+  color: white;
+}
+
+#yesButton:hover {
+  transform: translateY(-5px); /* Button lift effect */
+  box-shadow: 0px 12px 24px rgba(255, 20, 147, 0.4); /* Enhanced shadow on hover */
+  background: linear-gradient(135deg, #FF1493, #FF69B4); /* Reverse gradient */
+}
+
+#yesButton:active {
+  transform: translateY(3px); /* Button press effect */
+  box-shadow: 0px 5px 10px rgba(255, 20, 147, 0.3); /* Reduced shadow on click */
+}
+
+/* Style for text content */
+h1, p {
+  font-size: 24px;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  color: #555;
+}
+
+a {
+  text-decoration: none; /* Remove underline from the link */
+}
+
+
+</style>

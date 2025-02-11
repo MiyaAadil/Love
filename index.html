@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Question</title>
+</head>
+<body>
+  <div class="container">
+    <img src="photo.png" alt="Valentine's Image" class="valentine-image">
+    <h1>Will you be my Valentine?</h1>
+    <div class="buttons">
+        <a href="yes.html"><button id="yesButton" class="btn">Yes</button></a>
+        <!-- Use anchor tag directly for "No" button -->
+        <a href="no.html"><button id="noButton" class="btn">No</button></a>
+    </div>      
+  </div>
+</body>
+</html>
+
+<style>
+    /* Set background color and center everything */
+body {
+  background-color: #FFB6C1; /* Light pink background */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  text-align: center;
+}
+
+/* Container to center the content */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.valentine-image {
+  max-width: 200px; /* Adjust the size of the image */
+  margin-bottom: 20px; /* Space between the image and the question */
+  border-radius: 10px;
+}
+
+/* Container for the buttons */
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Base styles for buttons */
+.btn {
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px; /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; /* Smooth transition for all effects */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for Yes button */
+#yesButton {
+  background: linear-gradient(135deg, #FF69B4, #FF1493); /* Pink gradient */
+  color: white;
+}
+
+#yesButton:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0px 12px 24px rgba(255, 20, 147, 0.4); /* Enhanced shadow on hover */
+  background: linear-gradient(135deg, #FF1493, #FF69B4); /* Reverse gradient on hover */
+}
+
+#yesButton:active {
+  transform: translateY(2px); /* Button press effect */
+  box-shadow: 0px 5px 10px rgba(255, 20, 147, 0.3); /* Subtle shadow on click */
+}
+
+/* Style for No button */
+#noButton {
+  background: linear-gradient(135deg, #FF6347, #FF4500); /* Red-Orange gradient */
+  color: white;
+}
+
+#noButton:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0px 12px 24px rgba(255, 69, 0, 0.4); /* Enhanced shadow on hover */
+  background: linear-gradient(135deg, #FF4500, #FF6347); /* Reverse gradient on hover */
+}
+
+#noButton:active {
+  transform: translateY(2px); /* Button press effect */
+  box-shadow: 0px 5px 10px rgba(255, 69, 0, 0.3); /* Subtle shadow on click */
+}
+
+</style>
