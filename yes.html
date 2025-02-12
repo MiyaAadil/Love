@@ -1,362 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Card</title>
 <style>
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #FFB6C1;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.catalog-container {
-  width: 100%;
-  max-width: 500px; /* Increased from 400px */
-  height: 90vh; /* Increased from 80vh */
-  max-height: 700px; /* Increased from 500px */
-  position: relative;
-  perspective: 2000px;
-}
-
-.catalog {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-}
-
-.page {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-origin: left;
-  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transform-style: preserve-3d;
-  cursor: pointer;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  border-radius: 5px;
-  touch-action: pan-y pinch-zoom;
-}
-
-.page-content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  backface-visibility: hidden;
-  padding: 20px;
-  box-sizing: border-box;
-  background: white;
-  border-radius: 5px;
-}
-
-.catalog-img {
-  width: 85%; /* Increased from 85% */
-  height: 70%; /* Increased from 50% */
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  object-fit: contain;
-}
-
-.page-number {
-  position: absolute;
-  bottom: 15px;
-  font-family: Arial, sans-serif;
-  color: #666;
-  font-size: 16px; /* Increased font size */
-}
-
-.turn-page {
-  position: absolute;
-  width: 50px; /* Increased from 40px */
-  height: 50px; /* Increased from 40px */
-  background: rgba(0,0,0,0.1);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px; /* Increased from 20px */
-  color: white;
-  user-select: none;
-  transition: background 0.3s;
-  z-index: 1000;
-}
-
-.turn-page:hover {
-  background: rgba(0,0,0,0.2);
-}
-
-.prev-page {
-  left: -60px; /* Adjusted for larger buttons */
-}
-
-.next-page {
-  right: -60px; /* Adjusted for larger buttons */
-}
-
-.navigation-hint {
-  position: absolute;
-  bottom: -35px;
-  width: 100%;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  color: #666;
-  font-size: 16px; /* Increased from 14px */
-}
-
-h2 {
-  margin: 15px 0;
-  font-family: Arial, sans-serif;
-  color: #333;
-  font-size: clamp(20px, 5vw, 28px); /* Increased size range */
-  text-align: center;
-}
-
-p {
-  margin: 10px 0;
-  font-family: Arial, sans-serif;
-  color: #666;
-  text-align: center;
-  font-size: clamp(16px, 4vw, 20px); /* Increased size range */
-}
-
-/* Mobile-specific styles */
-@media (max-width: 768px) {
-  .catalog-container {
-    height: 85vh; /* Adjusted for better mobile view */
-    max-height: 800px; /* Increased for mobile */
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: white;
+    font-family: 'Arial', sans-serif;
   }
 
-  .turn-page {
-    width: 44px;
-    height: 44px;
-    font-size: 20px;
-  }
-  
-  .prev-page {
-    left: -45px;
-  }
-  
-  .next-page {
-    right: -45px;
-  }
-  
-  .page-content {
-    padding: 15px;
-  }
-}
-
-/* Small screen adjustments */
-@media (max-width: 480px) {
-  .turn-page {
-    display: none;
-  }
-  
-  .catalog-container {
-    height: 80vh;
-  }
-  
-  .navigation-hint {
-    font-size: 14px;
+  .card {
+    background: #FFB6C1;
+    height: 540px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 60px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
   }
 
-  .catalog-img {
-    width: 95%;
-    height: 55%;
+  .card-header {
+    background: linear-gradient(45deg, #ff6f91, #ff9671);
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
   }
+
+  .card-body {
+    padding: 20px;
+    text-align: center;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    z-index: 1;
+    position: relative;
+  }
+
+  .card-body p {
+    font-family: cursive;
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    line-height: 1.5;
+  }
+
+  .heart {
+  font-size: 5rem; /* Increase font size */
+  color: #ff6f91; /* Optional: Set color */
+  animation: heartbeat 1.5s infinite; /* Keep the animation */
+  margin-top: -10px; /* Adjust spacing as needed */
 }
 
-/* Prevent page turn animation during resize */
-.no-transition {
-  transition: none !important;
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+
+  .memory-link {
+  text-decoration: none; /* Remove underline from the anchor tag */
 }
+  .memory-button {
+    font-size: 18px;
+    padding: 12px 30px;
+    border: 2px solid #f88cb0;
+    background-color: #f392b2;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+    animation: bounce 2s infinite
+  }
+
+  .memory-button:hover {
+    background-color: #e03570;
+    transform: scale(1.1);
+  }
+
+  .memory-button .arrow {
+    margin-left: 10px;
+    font-size: 22px;
+    transition: margin-left 0.3s;
+  }
+
+  .memory-button:hover .arrow {
+    margin-left: 15px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 </style>
 </head>
 <body>
-<div class="catalog-container">
-  <div class="catalog">
-    <!-- Pages -->
-    <div class="page" style="z-index: 4;">
-      <div class="page-content">
-        <img src="photo1.jpg" alt="Product 1" class="catalog-img">
-        <h2>Summer Collection</h2>
-        <p>Discover our latest summer styles</p>
-        <span class="page-number">1</span>
-      </div>
+  <div class="card">
+    <div class="card-header">
+      With Love💐❤️
     </div>
-    
-    <div class="page" style="z-index: 3;">
-      <div class="page-content">
-        <img src="photo2.jpg" alt="Product 1" class="catalog-img">
-        <h2>Beach Essentials</h2>
-        <p>Perfect for your beach vacation</p>
-        <span class="page-number">2</span>
-      </div>
+    <div class="card-body">
+      <p>
+        Dear babe, I love you more and more each day and I am so greatful to have you by my side🤗. You brighten my days and always know how to make me smile. I feel like being with you all the time, creating beautiful memories together🌹. Hope to meet you soon Love. Happy Valentine's Day!
+      </p>
+      <p>Love, Aadil</p>
+      <p class="heart">❤️</p>
     </div>
-    
-    <div class="page" style="z-index: 2;">
-      <div class="page-content">
-        <img src="photo3.jpg" alt="Product 3" class="catalog-img">
-        <h2>Autumn Collection</h2>
-        <p>Cozy and stylish autumn wear</p>
-        <span class="page-number">3</span>
-      </div>
-    </div>
-    
-    <div class="page" style="z-index: 1;">
-      <div class="page-content">
-        <img src="photo4.jpg" alt="Product 4" class="catalog-img">
-        <h2>Winter Specials</h2>
-        <p>Stay warm in style</p>
-        <span class="page-number">4</span>
-      </div>
-    </div>
-
-    <div class="page" style="z-index: 1;">
-      <div class="page-content">
-        <img src="photo5.jpg" alt="Product 5" class="catalog-img">
-        <h2>Winter Specials</h2>
-        <p>Stay warm in style</p>
-        <span class="page-number">5</span>
-      </div>
-    </div>
-
-    <div class="page" style="z-index: 1;">
-        <div class="page-content">
-          <img src="photo5.jpg" alt="Product 5" class="catalog-img">
-          <h2>Winter Specials</h2>
-          <p>Stay warm in style</p>
-          <span class="page-number">6</span>
-        </div>
-      </div>
-
-      <div class="page" style="z-index: 1;">
-        <div class="page-content">
-          <img src="photo5.jpg" alt="Product 5" class="catalog-img">
-          <h2>Winter Specials</h2>
-          <p>Stay warm in style</p>
-          <span class="page-number">7</span>
-        </div>
-      </div>
-
-      <div class="page" style="z-index: 1;">
-        <div class="page-content">
-          <img src="photo5.jpg" alt="Product 5" class="catalog-img">
-          <h2>Winter Specials</h2>
-          <p>Stay warm in style</p>
-          <span class="page-number">8</span>
-        </div>
-      </div>
-
-      <div class="page" style="z-index: 1;">
-        <div class="page-content">
-          <img src="photo5.jpg" alt="Product 5" class="catalog-img">
-          <h2>Winter Specials</h2>
-          <p>Stay warm in style</p>
-          <span class="page-number">9</span>
-        </div>
-      </div>
-
-      <div class="page" style="z-index: 1;">
-        <div class="page-content">
-          <img src="photo5.jpg" alt="Product 5" class="catalog-img">
-          <h2>Winter Specials</h2>
-          <p>Stay warm in style</p>
-          <span class="page-number">10</span>
-        </div>
-      </div>
   </div>
-  
-  <div class="turn-page prev-page">←</div>
-  <div class="turn-page next-page">→</div>
-  <div class="navigation-hint">Swipe or click to turn pages</div>
-</div>
 
-<script>
-const pages = document.querySelectorAll('.page');
-let currentPage = 0;
-let startX = 0;
-let isDragging = false;
+  <!-- Button below the card -->
+  <a href="try.html" class="memory-link">
+    <button class="memory-button">
+      Look back to our memories <span class="arrow">→</span>
+    </button>
+  </a>
 
-function turnPage(direction) {
-  if (direction === 'next' && currentPage < pages.length - 1) {
-    pages[currentPage].style.transform = 'rotateY(-180deg)';
-    currentPage++;
-  } else if (direction === 'prev' && currentPage > 0) {
-    currentPage--;
-    pages[currentPage].style.transform = 'rotateY(0deg)';
-  }
-
-  // Update z-index for proper stacking
-  pages.forEach((page, index) => {
-    page.style.zIndex = pages.length - index + (index < currentPage ? -pages.length : 0);
-  });
-}
-
-// Touch events for mobile
-document.querySelector('.catalog').addEventListener('touchstart', (e) => {
-  startX = e.touches[0].clientX;
-  isDragging = true;
-});
-
-document.querySelector('.catalog').addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
-  e.preventDefault();
-});
-
-document.querySelector('.catalog').addEventListener('touchend', (e) => {
-  if (!isDragging) return;
-  
-  const endX = e.changedTouches[0].clientX;
-  const diffX = endX - startX;
-  
-  if (Math.abs(diffX) > 50) { // Minimum swipe distance
-    if (diffX > 0) {
-      turnPage('prev');
-    } else {
-      turnPage('next');
-    }
-  }
-  
-  isDragging = false;
-});
-
-// Click/tap events
-document.querySelector('.next-page')?.addEventListener('click', () => turnPage('next'));
-document.querySelector('.prev-page')?.addEventListener('click', () => turnPage('prev'));
-
-pages.forEach((page, index) => {
-  page.addEventListener('click', () => {
-    if (index === currentPage) {
-      turnPage('next');
-    }
-  });
-});
-
-// Handle window resize
-let resizeTimer;
-window.addEventListener('resize', () => {
-  document.body.classList.add('no-transition');
-  
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    document.body.classList.remove('no-transition');
-  }, 250);
-});
-</script>
 </body>
 </html>
