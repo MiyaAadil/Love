@@ -14,180 +14,130 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    min-height: 100vh;
   }
 
   .content-wrapper {
-    max-width: 500px;
-    width: 100%;
-    padding: 10px;
+    max-width: 800px;
+    width: 95%;
+    padding: 20px 10px;
+    margin: 0 auto;
   }
 
   .text {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: #333;
-    margin: 10px 0;
+    margin: 20px 0;
   }
 
   .text h2 {
     font-family: monospace;
-    font-size: 1.8rem; /* Larger font size for the heading */
-    color: white; /* Bright color for emphasis */
-    margin-bottom: 10px; /* Space below the heading */
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
+    color: white;
+    margin-bottom: 15px;
     font-weight: bold;
-    text-transform: uppercase; /* Make it stand out */
+    text-transform: uppercase;
   }
 
   .text p {
     font-family: monospace;
-    font-size: 1.5rem; /* Standard readable font size */
-    color: white; /* Neutral color for the text */
-    margin: 5px 0; /* Space between text elements */
-    line-height: 1.6; /* Improved readability */
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    color: white;
+    margin: 10px 0;
+    line-height: 1.6;
   }
 
   .image-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two images per row */
-    gap: 10px; /* Space between images */
-    margin-left: 8px;
-    margin-right: 20px;
-    object-fit: cover;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
   }
 
   .image-grid div {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    aspect-ratio: 1 / 1; /* Ensures square images */
-    border-radius: 30px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  .image1 {
-    background-image: url('her1.jpg');
-    opacity: 0.9;
+  .image-grid div:hover {
+    transform: scale(1.05);
+    opacity: 1;
   }
 
-  .image2 {
-    background-image: url('her2.jpg');
-    opacity: 0.9;
+  /* Keep all your existing image class definitions */
+  .image1 { background-image: url('her1.jpg'); opacity: 0.9; }
+  .image2 { background-image: url('her2.jpg'); opacity: 0.9; }
+  .image3 { background-image: url('her4.jpg'); opacity: 0.9; }
+  .image4 { background-image: url('her3.jpg'); opacity: 0.9; }
+  .image5 { background-image: url('her5.jpg'); opacity: 0.9; }
+  .image6 { background-image: url('her6.jpg'); opacity: 0.9; }
+  .image7 { background-image: url('her7.jpg'); opacity: 0.9; }
+  .image8 { background-image: url('her8.jpg'); opacity: 0.9; }
+  .image9 { background-image: url('her (1).jpg'); opacity: 0.9; }
+  .image10 { background-image: url('her (2).jpg'); opacity: 0.9; }
+  .image11 { background-image: url('her (3).jpg'); opacity: 0.9; }
+  .image12 { background-image: url('her (4).jpg'); opacity: 0.9; }
+  .image13 { background-image: url('her (5).jpg'); opacity: 0.9; }
+  .image14 { background-image: url('her (6).jpg'); opacity: 0.9; }
+  .image15 { background-image: url('her (7).jpg'); opacity: 0.9; }
+  .image16 { background-image: url('her (8).jpg'); opacity: 0.9; }
+  .image17 { background-image: url('her (9).jpg'); opacity: 0.9; }
+  .image18 { background-image: url('her (10).jpg'); opacity: 0.9; }
+  .image19 { background-image: url('her (11).jpg'); opacity: 0.9; }
+  .image20 { background-image: url('her (12).jpg'); opacity: 0.9; }
+  .image21 { background-image: url('her (13).jpg'); opacity: 0.9; }
+  .image22 { background-image: url('her (14).jpg'); opacity: 0.9; }
+  .image23 { background-image: url('her (15).jpg'); opacity: 0.9; }
+  .image24 { background-image: url('her (16).jpg'); opacity: 0.9; }
+
+  /* Responsive breakpoints */
+  @media (max-width: 768px) {
+    .content-wrapper {
+      width: 100%;
+      padding: 10px 5px;
+    }
+    
+    .image-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 5px;
+    }
+
+    .image-grid div {
+      border-radius: 15px;
+    }
   }
 
-  .image3 {
-    background-image: url('her4.jpg');
-    opacity: 0.9;
+  @media (max-width: 480px) {
+    .text h2 {
+      margin-top: 10px;
+    }
+
+    .image-grid {
+      gap: 8px;
+      padding: 3px;
+    }
+
+    .image-grid div {
+      border-radius: 12px;
+    }
   }
 
-  .image4 {
-    background-image: url('her3.jpg');
-    opacity: 0.9;
-  }
-
-  .image5 {
-    background-image: url('her5.jpg');
-    opacity: 0.9;
-  }
-
-  .image6 {
-    background-image: url('her6.jpg');
-    opacity: 0.9;
-  }
-
-  .image7 {
-    background-image: url('her7.jpg');
-    opacity: 0.9;
-  }
-
-  .image8 {
-    background-image: url('her8.jpg');
-    opacity: 0.9;
-  }
-
-  .image9 {
-    background-image: url('her (1).jpg');
-    opacity: 0.9;
-  }
-
-  .image10 {
-    background-image: url('her (2).jpg');
-    opacity: 0.9;
-  }
-
-  .image11 {
-    background-image: url('her (3).jpg');
-    opacity: 0.9;
-  }
-
-  .image12 {
-    background-image: url('her (4).jpg');
-    opacity: 0.9;
-  }
-
-  .image13 {
-    background-image: url('her (5).jpg');
-    opacity: 0.9;
-  }
-
-  .image14 {
-    background-image: url('her (6).jpg');
-    opacity: 0.9;
-  }
-
-  .image15 {
-    background-image: url('her (7).jpg');
-    opacity: 0.9;
-  }
-
-  .image16 {
-    background-image: url('her (8).jpg');
-    opacity: 0.9;
-  }
-
-  .image17 {
-    background-image: url('her (9).jpg');
-    opacity: 0.9;
-  }
-
-  .image18 {
-    background-image: url('her (10).jpg');
-    opacity: 0.9;
-  }
-
-  .image19 {
-    background-image: url('her (11).jpg');
-    opacity: 0.9;
-  }
-
-  .image20 {
-    background-image: url('her (12).jpg');
-    opacity: 0.9;
-  }
-
-  .image21 {
-    background-image: url('her (13).jpg');
-    opacity: 0.9;
-  }
-
-  .image22 {
-    background-image: url('her (14).jpg');
-    opacity: 0.9;
-  }
-
-  .image23 {
-    background-image: url('her (15).jpg');
-    opacity: 0.9;
-  }
-
-  .image24 {
-    background-image: url('her (16).jpg');
-    opacity: 0.9;
-  }
-
-  /* Media query for very small screens */
   @media (max-width: 360px) {
     .image-grid {
-      grid-template-columns: 1fr; /* Single column for extremely small devices */
+      grid-template-columns: repeat(1, 1fr);
+      max-width: 280px;
+      margin: 0 auto;
     }
   }
 </style>
@@ -196,7 +146,6 @@
   <div class="content-wrapper">
     <div class="text">
       <h2>You & me 🤗</h2>
-      
     </div>
 
     <div class="image-grid">
@@ -234,14 +183,10 @@
   <audio id="memorySong" src="ratiyaan2.m4a"></audio>
 
   <script>
-    // Wait until the page is fully loaded
     window.onload = function() {
-      // Get the audio element
       const memorySong = document.getElementById('memorySong');
-      
-      // Play the song when the page loads
       memorySong.play().then(() => {
-        console.log("Song is playing on try.html!");
+        console.log("Song is playing!");
       }).catch((error) => {
         console.log("Error playing song: ", error);
       });

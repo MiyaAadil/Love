@@ -9,44 +9,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         .safe-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
             background: #fff;
-            padding: 20px;
+            padding: 15px;
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border: 4px solid pink;
-            max-width: 90%;
-            width: 400px;
+            width: 100%;
+            max-width: 600px;
+            gap: 15px;
         }
 
         .image-container {
-            margin-bottom: 20px;
+            flex: 0 0 auto;
+            width: 45%;
+            max-width: 200px;
         }
 
         .image-container img {
             width: 100%;
             height: auto;
+            aspect-ratio: 2/3;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 20px;
         }
 
         .input-container {
+            flex: 1;
+            min-width: 0;
             text-align: center;
-            width: 100%;
         }
 
         .input-container h1 {
-            font-size: 18px;
+            font-size: clamp(14px, 3vw, 18px);
             margin-bottom: 10px;
             color: #ff6f9d;
         }
@@ -54,18 +61,21 @@
         .number-pad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 8px;
+            width: 100%;
         }
 
         .number-pad button {
             width: 100%;
-            padding: 15px 0;
+            aspect-ratio: 1;
             border: none;
             border-radius: 50%;
             background-color: #ff6f9d;
             color: white;
-            font-size: 20px;
+            font-size: clamp(14px, 3vw, 20px);
             cursor: pointer;
+            touch-action: manipulation;
+            padding: 0;
         }
 
         .number-pad button:hover {
@@ -73,35 +83,33 @@
         }
 
         #password {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            padding: 10px;
-            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+            width: 90%;
             border: 2px solid #ff6f9d;
             border-radius: 5px;
             text-align: center;
-            font-size: 18px;
+            font-size: clamp(14px, 3vw, 18px);
         }
 
         .error-message {
             color: red;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             margin-top: 10px;
         }
 
-        @media (min-width: 600px) {
+        @media (max-width: 350px) {
             .safe-container {
-                flex-direction: row;
-                max-width: 600px;
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .number-pad {
+                gap: 5px;
             }
 
             .image-container {
-                margin-right: 20px;
-                margin-bottom: 0;
-            }
-
-            .input-container {
-                width: 50%;
+                width: 40%;
             }
         }
     </style>
@@ -109,10 +117,10 @@
 <body>
     <div class="safe-container">
         <div class="image-container">
-            <img src="your-image.jpg" alt="Image">
+            <img src="her5.jpg" alt="Image">
         </div>
         <div class="input-container">
-            <h1>Enter your password</h1>
+            <h1>Enter my birth year (AD)</h1>
             <input type="password" id="password" maxlength="4" readonly>
             <div class="number-pad">
                 <button onclick="appendNumber('1')">1</button>
