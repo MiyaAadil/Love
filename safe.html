@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Safe</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .safe-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 4px solid pink;
+        }
+
+        .image-container {
+            margin-right: 20px;
+        }
+
+        .image-container img {
+            width: 200px;
+            height: 290px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .input-container {
+            text-align: center;
+        }
+
+        .input-container h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ff6f9d;
+        }
+
+        .number-pad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .number-pad button {
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 50%;
+            background-color: #ff6f9d;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .number-pad button:hover {
+            background-color: #e0557d;
+        }
+
+        #password {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 80%;
+            border: 2px solid #ff6f9d;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="safe-container">
+        <div class="image-container">
+            <img src="her5.jpg" alt="Image">
+        </div>
+        <div class="input-container">
+            <h1>Enter my birth year (AD)</h1>
+            <input type="password" id="password" maxlength="4" readonly>
+            <div class="number-pad">
+                <button onclick="appendNumber('1')">1</button>
+                <button onclick="appendNumber('2')">2</button>
+                <button onclick="appendNumber('3')">3</button>
+                <button onclick="appendNumber('4')">4</button>
+                <button onclick="appendNumber('5')">5</button>
+                <button onclick="appendNumber('6')">6</button>
+                <button onclick="appendNumber('7')">7</button>
+                <button onclick="appendNumber('8')">8</button>
+                <button onclick="appendNumber('9')">9</button>
+                <button onclick="clearPassword()">X</button>
+                <button onclick="appendNumber('0')">0</button>
+                <button onclick="submitPassword()">→</button>
+            </div>
+            <p class="error-message" id="error-message"></p>
+        </div>
+    </div>
+
+    <script>
+        const correctPassword = "2002";
+
+        function appendNumber(number) {
+            const passwordField = document.getElementById("password");
+            if (passwordField.value.length < 4) {
+                passwordField.value += number;
+            }
+        }
+
+        function clearPassword() {
+            document.getElementById("password").value = "";
+            document.getElementById("error-message").textContent = "";
+        }
+
+        function submitPassword() {
+            const passwordField = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            if (passwordField === correctPassword) {
+                window.location.href = "yes.html";
+            } else {
+                errorMessage.textContent = "Incorrect password. Please try again.";
+                clearPassword();
+            }
+        }
+    </script>
+</body>
+</html>
